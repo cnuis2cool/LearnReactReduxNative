@@ -7,9 +7,10 @@ import RadioButton from "../shared-components/RadioButton";
 class TestComponent extends Component {
     constructor(props) {
         super(props);
+        //this.finishWithBind = this.finish.bind(this);
     }
 
-    finish(/* this = ref of TestComponent object */) {
+    finish = (/* this = ref of TestComponent object */) => {
 
     }
 
@@ -42,7 +43,7 @@ class TestComponent extends Component {
                 )}
 
                 <div classname="form-group">
-                    <button className="btn btn-success" onClick={() => this.finish()}>Finish</button>
+                    <button className="btn btn-success" onClick={this.finish}>Finish</button>
                 </div>
             </div>
         );
