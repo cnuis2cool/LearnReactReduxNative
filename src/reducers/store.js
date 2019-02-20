@@ -3,5 +3,11 @@ import testReducer from "./testReducer";
 
 const store = createStore(combineReducers({testReducer}));
 
-export default store;
 //window.store = store;   // for debugging 
+
+store.subscribe(() => {
+    // window.console.clear();
+    // console.table(store.getState().testReducer.questions);
+});
+
+export default store;
