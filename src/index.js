@@ -1,89 +1,38 @@
 
-// Example 11
+// Example 11 - Full fledged App.
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Provider, connect} from "react-redux";
-import { createStore, combineReducers } from "redux";
+import Test from "./components/Test";
+import TestEditing from "./components/TestEditing";
+import AddQuestion from "./components/AddQuestion";
+import store from "./reducers/store";
 
-function counterReducer (state = { count: 0 }, action) {
-    
-    switch (action.type) {
-
-        case "INCREMENT":
-            return {count: state.count + 1}; // return to store so that this object is passed by store next time
-
-        case "DECREMENT":
-            return {count: state.count - 1};
-
-        default:
-            return state;
-    }
-}
-
-/******************* Helper functions for dispatch ************* */
-
-function increment() {
-    return {type: "INCREMENT", payload: null};  // action
-}
-
-function  decrement() {
-    return {type: "DECREMENT", payload: null};
-}
-
-/************************************************************** */
-
-const IncrementComponent = ({c, increment}) => (
-    <div>
-        {c}
-        <button onClick={() => increment()}>Increment</button>
-    </div>
-);
-
-let obtainStateForIC = (store) => {
-    return { c: store.counterReducer.count };
-};
-
-let IncrementComponentFromConnect = connect(obtainStateForIC, {increment})(IncrementComponent);
-
-const DecrementComponent = ({c, decrement}) => (
-    <div>
-        {c}
-        <button onClick={() => decrement()}>Decrement</button>
-    </div>
-);
-
-let obtainStateForDC = (store) => {
-    return { c: store.counterReducer.count };
-};
-
-let DecrementComponentFromConnect = connect(obtainStateForDC, {decrement})(DecrementComponent);
-
-class AppComponent extends Component {
-
-    render() {
-        return(
-            <div>
-                <IncrementComponentFromConnect/>
-                <br/>
-                <DecrementComponentFromConnect/>
+const AppComponent = () => (
+    <div className="container-fluid" style={{marginTop:10}}>
+        <h3>Online Test Application</h3>
+        <hr/>
+        <div className="row">
+            <div className="col-4">
+                <Test/>
             </div>
-        );
-    }
-}
-
-// Make reducer part of the store
-let store = createStore(combineReducers({ counterReducer }));
-
-// store.subscribe(() => {
-//     console.log('State: ' + store.getState().counterReducer.count);
-// });
+            <div className="col-5">
+                <TestEditing/>
+            </div>
+            <div className="col-3">
+                <AddQuestion/>
+            </div>
+        </div>
+    </div>
+);
 
 ReactDOM.render(
     <Provider store={store}>
-        <AppComponent />
+        <AppComponent/>
     </Provider>,
     document.getElementById("root")
 );
+
 
 
 //-----------------------------
