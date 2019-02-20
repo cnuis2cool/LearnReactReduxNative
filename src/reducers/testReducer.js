@@ -21,6 +21,96 @@ const testReducer = (state = testReducerInitialState, {type, payload}) => {
             };
         }
 
+        case "SET_STATEMENT":
+        {
+            return {
+                questions: state.questions.map(question =>
+                    {
+                        if(question == payload.question) {
+                            return {...question, statement: payload.userOption};
+                        } else {
+                            return question;
+                        }
+                    }
+                )
+            };
+        }
+
+        case "SET_OPTION1":
+        {
+            return {
+                questions: state.questions.map(question =>
+                    {
+                        if(question == payload.question) {
+                            return {...question, op1: payload.userOption};
+                        } else {
+                            return question;
+                        }
+                    }
+                )
+            };            
+        }
+
+        case "SET_OPTION2":
+        {
+            return {
+                questions: state.questions.map(question =>
+                    {
+                        if(question == payload.question) {
+                            return {...question, op2: payload.userOption};
+                        } else {
+                            return question;
+                        }
+                    }
+                )
+            };            
+        }
+
+        case "SET_OPTION3":
+        {
+            return {
+                questions: state.questions.map(question =>
+                    {
+                        if(question == payload.question) {
+                            return {...question, op3: payload.userOption};
+                        } else {
+                            return question;
+                        }
+                    }
+                )
+            };            
+        }
+
+        case "SET_OPTION4":
+        {
+            return {
+                questions: state.questions.map(question =>
+                    {
+                        if(question == payload.question) {
+                            return {...question, op4: payload.userOption};
+                        } else {
+                            return question;
+                        }
+                    }
+                )
+            };            
+        }
+
+        case "SET_CORRECT_ANSWER":
+        {
+            return {
+                questions: state.questions.map(question =>
+                    {
+                        if(question == payload.question) {
+                            return {...question, correct: payload.userOption};
+                        } else {
+                            return question;
+                        }
+                    }
+                )
+            };            
+        }        
+
         default:
             return state;
     }
