@@ -1,7 +1,7 @@
-import {Component} from "react";
+import React, {Component} from "react";
 
 
-export class ComboBox extends Component {
+class ComboBox extends Component {
     constructor(props) {
         super(props);
         this.state = {value: this.props.selectedValue};
@@ -35,3 +35,5 @@ export class ComboBox extends Component {
         );
     }
 }
+
+export default ComboBox;

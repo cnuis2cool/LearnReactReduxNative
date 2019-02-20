@@ -1,8 +1,8 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {connect} from "react-redux";
 import TextBox from "../shared-components/TextBox";
 import ComboBox from "../shared-components/ComboBox";
-import addQuestion from "../reducers/actions";
+import {addQuestion} from "../reducers/actions";
 
 class AddQuestionComponent extends Component {
     constructor(props) {
@@ -85,4 +85,6 @@ class AddQuestionComponent extends Component {
     }
 }
 
-export default connect(null, {addQuestion})(AddQuestionComponent);
+const AddQuestion = connect(null, {addQuestion})(AddQuestionComponent);
+
+export default AddQuestion;

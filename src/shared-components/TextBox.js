@@ -1,6 +1,6 @@
-import {Component} from "react";
+import React, {Component} from "react";
 
-export class TextBox extends Component {
+class TextBox extends Component {
     constructor(/* this */ props) {
         super(props);
         this.state = {value: props.value || ""};   // local state
@@ -25,3 +25,5 @@ export class TextBox extends Component {
         );
     }
 }
+
+export default TextBox;

@@ -2,27 +2,27 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import Test from "./components/Test";
+import TestEditing from "./components/TestEditing";
+import AddQuestion from "./components/AddQuestion";
+
+// Only the render function written as Lambda
+const App = () => (
+    <div className="container-fluid" style={{marginTop:10}}>
+        <h3>Online Test Application</h3>
+        <hr/>
+        <div className="row">
+            <div className="col-4">
+                <Test/>
+            </div>
+            <div className="col-5">
+                <TestEditing/>
+            </div>
+            <div className="col-3">
+                <AddQuestion/>
+            </div>
+        </div>
+    </div>
+);
 
 export default App;

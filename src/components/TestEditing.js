@@ -1,5 +1,7 @@
+import React from "react";
 import {connect} from "react-redux";
 
+// render function is written here as lambda
 const TestEditingComponent = ({questions}) => (
     <table className="table table-bordered">
         <thead>
@@ -13,8 +15,8 @@ const TestEditingComponent = ({questions}) => (
             </tr>
         </thead>
         <tbody>
-            {questions.map(question => 
-                <tr key={question.statement}>
+            {questions.map((question, index) => 
+                <tr key={index}>
                     <td>{question.statement}</td>
                     <td>{question.op1}</td>
                     <td>{question.op2}</td>
@@ -27,5 +29,7 @@ const TestEditingComponent = ({questions}) => (
     </table>
 );
 
-let mapStateToProps_TestEditing = store => ({questions: store.testReducer.questions});
-export default connect(mapStateToProps_TestEditing)(TestEditingComponent);
+const mapStateToProps = store => ({questions: store.testReducer.questions});
+const TestEditing = connect(mapStateToProps)(TestEditingComponent);
+
+export default TestEditing;

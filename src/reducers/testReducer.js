@@ -1,6 +1,7 @@
 const testReducerInitialState = {questions: []};
 
-export default testReducer = (state = testReducerInitialState, {type, payload}) => {
+// reducer is alwasys called by store, when dispatch (action) is called.
+const testReducer = (state = testReducerInitialState, {type, payload}) => {
     switch(type) {
         case "ADD_QUESTION":
             return {questions: [...state.questions, payload]};   // new object returned as state object to store
@@ -8,3 +9,5 @@ export default testReducer = (state = testReducerInitialState, {type, payload}) 
             return state;
     }
 }
+
+export default testReducer;
