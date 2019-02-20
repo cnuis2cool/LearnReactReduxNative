@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import TextBox from "../shared-components/TextBox";
 import ComboBox from "../shared-components/ComboBox";
 
+import {setStatement, setOp1, setOp2, setOp3, setOp4, setCorrectAnswer} from "../reducers/actions";
+
 // render function is written here as lambda
 //const TestEditingComponent = ({questions}) => (
 class TestEditingComponent extends Component {
@@ -28,74 +30,38 @@ class TestEditingComponent extends Component {
                         <th>Option 3</th>
                         <th>Option 4</th>
                         <th>Correct Answer</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {this.props.questions.map((question, index) => 
                         <tr key={index}>
                             <td>
-                                <TextBox placeholder="Enter Statement" value={question.statement} onComplete={(value) => console.log(value)} />
-                                {question.statement}
+                                <TextBox placeholder="Enter Statement" value={question.statement} onComplete={(value) => this.props.setStatement(value, question)} />
                             </td>
                             <td>
-                                <TextBox placeholder="Enter Option 1" value={question.op1} onComplete={(value) => console.log(value)} />
+                                <TextBox placeholder="Enter Option 1" value={question.op1} onComplete={(value) => this.props.setOp1(value, question)} />
                             </td>
                             <td>
-                                <TextBox placeholder="Enter Option 2" value={question.op2} onComplete={(value) => console.log(value)} />
+                                <TextBox placeholder="Enter Option 2" value={question.op2} onComplete={(value) => this.props.setOp2(value, question)} />
                             </td>
                             <td>
-                                <TextBox placeholder="Enter Option 3" value={question.op3} onComplete={(value) => console.log(value)} />
+                                <TextBox placeholder="Enter Option 3" value={question.op3} onComplete={(value) => this.props.setOp3(value, question)} />
                             </td>
                             <td>
-                                <TextBox placeholder="Enter Option 4" value={question.op4} onComplete={(value) => console.log(value)} />
+                                <TextBox placeholder="Enter Option 4" value={question.op4} onComplete={(value) => this.props.setOp4(value, question)} />
                             </td>
                             <td>
-                                <ComboBox items={this.items} selectedValue={question.correct} onItemSelected={(value) => console.log(value)} />
+                                <ComboBox items={this.items} selectedValue={question.correct} onItemSelected={(value) => this.props.setCorrectAnswer(value, question)} />
                             </td>
-                            <th>
-                                <button className="btn btn-link">Edit</button>
-                            </th>
-
                         </tr>   
                     )}
                 </tbody>
             </table>
         );
     }
-
-
 }
 
 const mapStateToProps = store => ({questions: store.testReducer.questions});
-const TestEditing = connect(mapStateToProps)(TestEditingComponent);
+const TestEditing = connect(mapStateToProps, {setStatement, setOp1, setOp2, setOp3, setOp4, setCorrectAnswer})(TestEditingComponent);
 
 export default TestEditing;
-
-
-
-// <tbody>
-//             {questions.map((question, index) => 
-//                 <tr key={index}>
-//                     <td>
-//                         <TextBox placeholder="Enter Statement" value={question.statement} onComplete={this.setStatement} />
-//                         {question.statement}
-//                     </td>
-//                     <td>
-//                         {question.op1}
-//                     </td>
-//                     <td>
-//                         {question.op2}
-//                     </td>
-//                     <td>
-//                         {question.op3}
-//                     </td>
-//                     <td>
-//                         {question.op4}
-//                     </td>
-//                     <td>
-//                         {question.correct}
-//                     </td>
-//                 </tr>   
-//             )}
-//         </tbody>

@@ -27,7 +27,7 @@ const testReducer = (state = testReducerInitialState, {type, payload}) => {
                 questions: state.questions.map(question =>
                     {
                         if(question == payload.question) {
-                            return {...question, statement: payload.userOption};
+                            return {...question, statement: payload.statement};
                         } else {
                             return question;
                         }
@@ -42,7 +42,7 @@ const testReducer = (state = testReducerInitialState, {type, payload}) => {
                 questions: state.questions.map(question =>
                     {
                         if(question == payload.question) {
-                            return {...question, op1: payload.userOption};
+                            return {...question, op1: payload.op1};
                         } else {
                             return question;
                         }
@@ -57,7 +57,7 @@ const testReducer = (state = testReducerInitialState, {type, payload}) => {
                 questions: state.questions.map(question =>
                     {
                         if(question == payload.question) {
-                            return {...question, op2: payload.userOption};
+                            return {...question, op2: payload.op2};
                         } else {
                             return question;
                         }
@@ -72,7 +72,7 @@ const testReducer = (state = testReducerInitialState, {type, payload}) => {
                 questions: state.questions.map(question =>
                     {
                         if(question == payload.question) {
-                            return {...question, op3: payload.userOption};
+                            return {...question, op3: payload.op3};
                         } else {
                             return question;
                         }
@@ -87,7 +87,7 @@ const testReducer = (state = testReducerInitialState, {type, payload}) => {
                 questions: state.questions.map(question =>
                     {
                         if(question == payload.question) {
-                            return {...question, op4: payload.userOption};
+                            return {...question, op4: payload.op4};
                         } else {
                             return question;
                         }
@@ -102,7 +102,7 @@ const testReducer = (state = testReducerInitialState, {type, payload}) => {
                 questions: state.questions.map(question =>
                     {
                         if(question == payload.question) {
-                            return {...question, correct: payload.userOption};
+                            return {...question, correct: payload.correct};
                         } else {
                             return question;
                         }
