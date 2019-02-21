@@ -5,6 +5,16 @@ const questions = [
     {statement: "DDD", op1: "D1", op2: "D2", op3: "D3", op4: "D4", correct: 1}
 ];
 
+const customers = [
+    {id: 1, name: 'A1'},
+    {id: 2, name: 'A2'},
+    {id: 3, name: 'A3'},
+    {id: 4, name: 'A4'},
+    {id: 5, name: 'A5'},
+    {id: 6, name: 'A6'},
+    {id: 7, name: 'A7'}
+  ];
+
 // Restful Service
 
 const ex = require("express");
@@ -23,4 +33,8 @@ ws.use((request, response, next) => {
 
 ws.get ("/questions", (request, response) => {
     response.json(questions);
+});
+
+ws.get ("/customers", (request, response) => {
+    response.json(customers);
 });
